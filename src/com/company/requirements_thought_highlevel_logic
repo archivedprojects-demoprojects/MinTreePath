@@ -1,0 +1,30 @@
+Requirements
+-Must make use of lambda calculus (Function concepts)
+-Algorithm able to handle 500 row triangles
+
+Thought
+-Max number of possible paths for a single leave === length of tree - 1
+--Assuming the tree traversal is only one directional
+--Example:- Possible paths to get to leave 1
+            Tree:
+            7
+            6  3
+            3  8 5
+            11 2 10 9
+            15 1 7  6 13
+
+            Accepted paths:
+            - 7-6-3-11-1
+            - 7-6-3-2-1
+            - 7-6-8-2-1
+            - 7-3-8-2-1
+            Unaccepted paths:
+            - 7-3-5-10-8-2-1 (in this scenario, we went upwards from 10 to 8 - we are assuming that this is not allowed
+                                The tree can only be traversed bottom up or top down)
+
+High-Level Logic
+-Bottom up vs Top down approach (memoization)
+-Dynamics Programming vs Naive approach
+-Test time complexity of both approaches
+-Make use of concurrency
+
