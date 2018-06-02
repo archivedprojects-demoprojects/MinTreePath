@@ -8,10 +8,10 @@ import java.util.stream.IntStream;
 import static java.lang.Integer.min;
 
 public class Sum_of_path {
-    private Tree_traverse tree_traverse = new Tree_traverse();
-    private Visualisation visualisation = new Visualisation();
-    public long traverse_time = 0;
-    public long print_time = 0;
+    private final Tree_traverse tree_traverse = new Tree_traverse();
+    private final Visualisation visualisation = new Visualisation();
+    protected long traverse_time = 0;
+    protected long print_time = 0;
 
     /*
      * Method break down;
@@ -82,7 +82,7 @@ public class Sum_of_path {
         //System.out.println("Shortest Path Traversal (Index): " + shortest_path_index);
         //System.out.println("Shortest Path Traversal (Values): " + shortest_path_values);
         //System.out.println("Shortest Path Sum: "+ shortest_path_values.stream().mapToInt(Integer::intValue).sum());
-        System.out.println("Minimum path is: " + shortest_path_values.stream().map(i -> i.toString()).collect( Collectors.joining(" + ",""," = "))+ shortest_path_values.stream().mapToInt(Integer::intValue).sum());
+        System.out.println("Minimum path is: " + shortest_path_values.stream().map(Object::toString).collect( Collectors.joining(" + ",""," = "))+ shortest_path_values.stream().mapToInt(Integer::intValue).sum());
     }
 
 }

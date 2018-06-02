@@ -25,11 +25,11 @@ public class Main {
      *   data_small  : 6ms                    data_small  : 18ms
      *   data_test   : 1ms                    data_test   : 9ms
      */
+    private static Sum_of_path sum_of_path = new Sum_of_path();
+    private static File_read file_read = new File_read();
+
 
     public static void main(String[] args) {
-        Sum_of_path sum_of_path = new Sum_of_path();
-        File_read file_read = new File_read();
-
         long startTime = System.nanoTime();
         List<List<Integer>> content = file_read.file_read("data_test.txt");
         //List<List<Integer>> content = file_read.file_read("data_small.txt");

@@ -19,7 +19,7 @@ public class Visualisation {
         if (content.size() > 0) {
             List<List<Integer>> tree = new ArrayList<>(content);
             //System.out.println(content.get(0));
-            System.out.println(tree.get(0).stream().map(i -> i.toString()).collect( Collectors.joining(" ","","")));
+            System.out.println(tree.get(0).stream().map(Object::toString).collect( Collectors.joining(" ","","")));
             tree.remove(0);
             tree_print(tree);
         }else{
