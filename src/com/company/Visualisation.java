@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,12 +15,13 @@ public class Visualisation {
         }
     }
 
-    protected void array_print1(List<List<Integer>> content) {
+    protected void tree_print(List<List<Integer>> content) {
         if (content.size() > 0) {
+            List<List<Integer>> tree = new ArrayList<>(content);
             //System.out.println(content.get(0));
-            System.out.println(content.get(0).stream().map(i -> i.toString()).collect( Collectors.joining(" ","","")));
-            content.remove(0);
-            array_print1(content);
+            System.out.println(tree.get(0).stream().map(i -> i.toString()).collect( Collectors.joining(" ","","")));
+            tree.remove(0);
+            tree_print(tree);
         }else{
             System.out.println("EOF");
         }

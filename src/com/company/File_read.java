@@ -23,7 +23,6 @@ public class File_read {
             while((line = bufferedReader.readLine()) != null) {
                 //Using Lambda Expressions
                 line_content = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
-                //line_content = Integer.parseInt(line.split(" ")); - Old approach using Strings
                 content.add(IntStream.of(line_content).boxed().collect(Collectors.toList()));
             }
 

@@ -10,6 +10,9 @@ import static java.lang.Integer.min;
 public class Sum_of_path {
     private Tree_traverse tree_traverse = new Tree_traverse();
     private Visualisation visualisation = new Visualisation();
+    public long traverse_time = 0;
+    public long print_time = 0;
+
     /*
      * Method break down;
      * Obtain list of contents(parameter)
@@ -58,13 +61,24 @@ public class Sum_of_path {
             }
         }
         Collections.reverse(shortest_paths);
-        List<Integer> shortest_path_index = tree_traverse.top_down_traversal(shortest_paths);
+        long startTime = System.nanoTime();
+        //List<Integer> shortest_path_index = tree_traverse.top_down_traversal_old(shortest_paths);
+        List<Integer> shortest_path_index = tree_traverse.top_down_sum(shortest_paths,true);
+        long endTime = System.nanoTime();
+        traverse_time = (endTime - startTime);
+
         List<Integer> shortest_path_values = new ArrayList<>();
 
         for(int i = 0; i < content.size(); i++){//getting the values of the tree from the index
             shortest_path_values.add(content.get(i).get(shortest_path_index.get(i)));
         }
-        visualisation.array_print1(content);
+
+        startTime = System.nanoTime();
+        visualisation.tree_print(content);
+        //visualisation.array_print(content);
+        endTime = System.nanoTime();
+        print_time = (endTime - startTime);
+
         //System.out.println("Shortest Path Traversal (Index): " + shortest_path_index);
         //System.out.println("Shortest Path Traversal (Values): " + shortest_path_values);
         //System.out.println("Shortest Path Sum: "+ shortest_path_values.stream().mapToInt(Integer::intValue).sum());
