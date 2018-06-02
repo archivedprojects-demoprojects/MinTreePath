@@ -44,10 +44,8 @@ public class File_read {
             List<String> lines = Files.readAllLines(Paths.get(file_name), StandardCharsets.UTF_8);
             return tree_creator(lines);
             //return tree_creator_opt(lines);
-        } catch (FileNotFoundException e) {
-            System.err.println(e);
-        }catch (IOException io){
-            System.err.println(io);
+        } catch (IOException io){
+            io.printStackTrace();
         }
         return null;
     }
@@ -63,8 +61,8 @@ public class File_read {
     }
 
     private List<List<Integer>> tree_creator_decl(List<String> rows){
-        for(int i = 0; i < rows.size(); i++){
-            int[] line_content = Arrays.stream(rows.get(i).split(" ")).mapToInt(Integer::parseInt).toArray();
+        for (String row : rows) {
+            int[] line_content = Arrays.stream(row.split(" ")).mapToInt(Integer::parseInt).toArray();
             tree_read.add(IntStream.of(line_content).boxed().collect(Collectors.toList()));
         }
         return tree_read;

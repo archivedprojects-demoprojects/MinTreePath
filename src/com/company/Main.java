@@ -30,21 +30,18 @@ public class Main {
      *   data_small  : 42ms
      *   data_test   : 36ms
      */
-    private static Sum_of_path sum_of_path = new Sum_of_path();
-    private static File_read file_read = new File_read();
-    private static Tree_generator tree_generator = new Tree_generator();
-
-    private static long startTime =0;
-    private static long endTime=0;
+    private static final Sum_of_path sum_of_path = new Sum_of_path();
+    private static final File_read file_read = new File_read();
+    private static final Tree_generator tree_generator = new Tree_generator();
 
     /*
     * StackOverflowError when trying to run files containing more than 2.75K of rows
     * */
     public static void main(String[] args) {
         tree_generator.generator(2500);
-        startTime = System.nanoTime();
+        long startTime = System.nanoTime();
         List<List<Integer>> content = file_read.file_read_buffer("data_test.txt"); // data_small ; data_big ; data_test ; data_gen
-        endTime = System.nanoTime();
+        long endTime = System.nanoTime();
         long read_duration = (endTime - startTime);
 
         if(content != null) {
