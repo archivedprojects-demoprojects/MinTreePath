@@ -43,13 +43,13 @@ public class Main {
     public static void main(String[] args) {
         tree_generator.generator(2500);
         startTime = System.nanoTime();
-        List<List<Integer>> content = file_read.file_read_buffer("data_gen.txt"); // data_small ; data_big ; data_test ; data_gen
+        List<List<Integer>> content = file_read.file_read_buffer("data_test.txt"); // data_small ; data_big ; data_test ; data_gen
         endTime = System.nanoTime();
         long read_duration = (endTime - startTime);
 
         if(content != null) {
             startTime = System.nanoTime();
-            sum_of_path.bottom_up_calc_top_down_traverse(content);
+            sum_of_path.result(content);
             endTime = System.nanoTime();
             long path_duration = (endTime - startTime) - (sum_of_path.traverse_time + sum_of_path.print_time);
 
