@@ -20,6 +20,7 @@ public class Sum_of_path {
      * Create a new tree (Sum)
      *   Said tree will calculate the sum of the leaf
      *   It will check the least expensive path to take between the two parent nodes and add that as its preferred parent
+     *   This will be calculated starting from the bottom and working upwards
      * From the new tree we inverse it again (parent on top - same as we started)
      *   We then traverse the tree from top to bottom taking the least expensive leaves
      *   The index of the new tree throughout traversal is stored

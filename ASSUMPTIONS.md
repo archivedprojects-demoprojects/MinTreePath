@@ -7,4 +7,7 @@
     1. One parent   :- if on the far right/left of the tree
     2. Two parents  :- otherwise
     3. Exception made to first node (has not parents only children)
-
+4. The file input must be made up of integers only.
+    1. Doubles, Strings or any other data type is not accepted.
+5. The file input must not have more than 2750 rows in total
+    1. Otherwise the memory heap for the JVM must be increased accordingly.

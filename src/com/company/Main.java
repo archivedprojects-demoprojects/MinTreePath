@@ -29,7 +29,6 @@ public class Main {
      *   data_big    : 1936ms
      *   data_small  : 42ms
      *   data_test   : 36ms
-     *
      */
     private static Sum_of_path sum_of_path = new Sum_of_path();
     private static File_read file_read = new File_read();
@@ -38,10 +37,13 @@ public class Main {
     private static long startTime =0;
     private static long endTime=0;
 
+    /*
+    * StackOverflowError when trying to run files containing more than 2.75K of rows
+    * */
     public static void main(String[] args) {
-        tree_generator.generator(5);
+        tree_generator.generator(2500);
         startTime = System.nanoTime();
-        List<List<Integer>> content = file_read.file_read_buffer("data_gen.txt"); // data_small ; data_big ; data_test
+        List<List<Integer>> content = file_read.file_read_buffer("data_gen.txt"); // data_small ; data_big ; data_test ; data_gen
         endTime = System.nanoTime();
         long read_duration = (endTime - startTime);
 

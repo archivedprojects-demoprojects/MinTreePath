@@ -28,3 +28,16 @@ High-Level Logic
 -Test time complexity of both approaches
 -Make use of concurrency
 
+Algorithm disadvantages:
+-Traversal of the tree: top down; This is because largest node would be the parent and we can go downwards from their
+-Sum of the paths must be calculated prior to finding the shortest path
+-Not making use of multi-threading
+    -can be implemented to read file from the end and start parsing shortest path at the same time
+
+Algorithm advantages:
+-Traversal of the tree is optimal (making use of recursion)
+-Calculation of the new tree is not wasteful - to check if can be optimised further
+-File reading has been made optimal through lambda java expressions
+
+
+
