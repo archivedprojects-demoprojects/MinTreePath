@@ -27,14 +27,15 @@ public class Main {
      */
     private static Sum_of_path sum_of_path = new Sum_of_path();
     private static File_read file_read = new File_read();
-
+    private static long startTime =0;
+    private static long endTime=0;
 
     public static void main(String[] args) {
-        long startTime = System.nanoTime();
-        List<List<Integer>> content = file_read.file_read("data_test.txt");
+        startTime = System.nanoTime();
+        List<List<Integer>> content = file_read.file_read_buffer("data_test.txt");
         //List<List<Integer>> content = file_read.file_read("data_small.txt");
         //List<List<Integer>> content = file_read.file_read("data_big.txt");
-        long endTime = System.nanoTime();
+        endTime = System.nanoTime();
         long read_duration = (endTime - startTime);
         if(content != null) {
             startTime = System.nanoTime();
@@ -43,11 +44,30 @@ public class Main {
             long path_duration = (endTime - startTime) - (sum_of_path.traverse_time + sum_of_path.print_time);
 
             //Testing timings on different text files
-            System.out.println("File Read   - Duration: "+read_duration/1000000+"ms");
-            System.out.println("Sum Calc    - Duration: "+path_duration/1000000+"ms");
-            System.out.println("Traverse    - Duration: "+sum_of_path.traverse_time/1000000+"ms");
-            System.out.println("Print       - Duration: "+sum_of_path.print_time/1000000+"ms");
+            //System.out.println("File Read Buf   - Duration: "+read_duration+"ns");
+            System.out.println("File Read Buf   - Duration: "+read_duration/1000000+"ms"+ " / "+ read_duration +"ns");
+            System.out.println("Sum Calc        - Duration: "+path_duration/1000000+"ms"+ " / "+ path_duration +"ns");
+            System.out.println("Traverse        - Duration: "+sum_of_path.traverse_time/1000000+"ms" + " / "+ sum_of_path.traverse_time+"ns");
+            System.out.println("Print           - Duration: "+sum_of_path.print_time/1000000+"ms"+ " / "+ sum_of_path.print_time +"ns");
 
         }
     }
+
+        /*
+        Removed Logic
+         Removed since recursive function was performing worse than original function:
+            File Read       - Duration: 18323800ns
+            File Read Decl  - Duration: 25824400ns
+            (to be exact, 36 times worse)
+        long startTime = System.nanoTime();
+        List<List<Integer>> content = file_read.file_read_decl("data_test.txt");
+        //List<List<Integer>> content = file_read.file_read_opt("data_small.txt");
+        //List<List<Integer>> content = file_read.file_read_opt("data_big.txt");
+        long endTime = System.nanoTime();
+        long read_opt_duration = (endTime - startTime);
+        System.out.println("File Read Opt   - Duration: "+read_opt_duration+"ns");
+        System.out.println("File Read Opt   - Duration: "+read_opt_duration/1000000+"ms");
+        */
+
+
 }
