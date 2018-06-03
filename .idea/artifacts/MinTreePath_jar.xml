@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MinTreePath:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MinTreePath_jar</output-path>
+    <root id="archive" name="MinTreePath.jar">
+      <element id="module-output" name="MinTreePath" />
+    </root>
+  </artifact>
+</component>
