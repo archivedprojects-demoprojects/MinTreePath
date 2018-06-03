@@ -7,9 +7,15 @@ public class Main {
     private static final File_read file_read = new File_read();
 
     public static void main(String[] args) {
-        List<List<Integer>> content = file_read.file_read_buffer(args[0]); // data_small ; data_big ; data_test ; data_gen;
-        if(content != null) {
-            sum_of_path.result(content);
+        try{
+            List<List<Integer>> content = file_read.file_read_buffer(args[0]); // data_small ; data_big ; data_test ; data_gen;
+            if(content != null) {
+                sum_of_path.result(content);
+            }
+        }catch (Exception e){
+            if(args.length == 0){
+                System.out.println("Please insert the file name containing the tree");
+            }
         }
     }
 }

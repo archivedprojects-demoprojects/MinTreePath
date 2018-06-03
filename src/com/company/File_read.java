@@ -13,16 +13,19 @@ public class File_read {
         int[] line_content;
         List<List<Integer>> content = new ArrayList<>();
         try {
-            FileReader fileReader = new FileReader(file_name);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            FileReader file_reader = new FileReader(file_name);
+            BufferedReader buffered_reader = new BufferedReader(file_reader);
 
-            while((line = bufferedReader.readLine()) != null) {
+            while((line = buffered_reader.readLine()) != null) {
                 //Using Lambda Expressions to split the line based on white spaces
                 line_content = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
                 content.add(IntStream.of(line_content).boxed().collect(Collectors.toList()));
             }
 
-            bufferedReader.close();
+            buffered_reader.close();
+            if(content.size() == 0 ){
+                System.out.println("File is empty");
+            }
             return content;
         }catch(FileNotFoundException ex) {
             System.out.println("Unable to open file '" + file_name + "'");
