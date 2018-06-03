@@ -13,9 +13,6 @@ public class Sum_of_path {
 
     private final List<Integer> best_values = new ArrayList<>();
 
-    protected long traverse_time = 0;
-    protected long print_time = 0;
-
     protected void result(List<List<Integer>> content){
         List<List<Integer>> bottom = new ArrayList<>(content);
         Collections.reverse(bottom); //parent node is now at the bottom
@@ -23,11 +20,8 @@ public class Sum_of_path {
         Collections.reverse(sum_tree); //parent node at the top again in our result tree
         sum_tree.add(bottom.get(0)); //adding the leaf nodes (end)
 
-        long startTime = System.nanoTime();
         tree_traverse.path = new ArrayList<>(); //Instantiating path
         List<Integer> shortest_path_index = tree_traverse.path_finder_top_down(sum_tree); //finding the optimal path
-        long endTime = System.nanoTime();
-        traverse_time = (endTime - startTime);
 
         //Since the path_finder algorithm returns the index of the tree not the actual value,
         //We use the result to check the original tree according to their index and save that
@@ -36,11 +30,7 @@ public class Sum_of_path {
             shortest_path_values.add(content.get(i).get(shortest_path_index.get(i)));//getting the values of the tree from the index
         }
 
-        startTime = System.nanoTime();
         visualisation.tree_print(content);
-        //visualisation.array_print(content);
-        endTime = System.nanoTime();
-        print_time = (endTime - startTime);
         System.out.println("Minimum path is: " + shortest_path_values.stream().map(Object::toString).collect( Collectors.joining(" + ",""," = "))+ shortest_path_values.stream().mapToInt(Integer::intValue).sum());
     }
 

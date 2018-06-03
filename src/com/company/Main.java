@@ -5,31 +5,11 @@ import java.util.List;
 public class Main {
     private static final Sum_of_path sum_of_path = new Sum_of_path();
     private static final File_read file_read = new File_read();
-    private static final Tree_generator tree_generator = new Tree_generator();
 
-    /*
-    * StackOverflowError when trying to run files containing more than 2.75K of rows
-    * */
     public static void main(String[] args) {
-        tree_generator.generator(2500);
-        long startTime = System.nanoTime();
-        List<List<Integer>> content = file_read.file_read_buffer("data_test.txt"); // data_small ; data_big ; data_test ; data_gen
-        long endTime = System.nanoTime();
-        long read_duration = (endTime - startTime);
-
+        List<List<Integer>> content = file_read.file_read_buffer(args[0]); // data_small ; data_big ; data_test ; data_gen;
         if(content != null) {
-            startTime = System.nanoTime();
             sum_of_path.result(content);
-            endTime = System.nanoTime();
-            long path_duration = (endTime - startTime) - (sum_of_path.traverse_time + sum_of_path.print_time);
-
-            //Testing timings on different text files
-            System.out.println("File Read Buf   - Duration: "+read_duration/1000000+"ms / "+ read_duration +"ns");
-            System.out.println("Sum Calc        - Duration: "+path_duration/1000000+"ms / "+ path_duration +"ns");
-            System.out.println("Traverse        - Duration: "+sum_of_path.traverse_time/1000000+"ms / "+ sum_of_path.traverse_time+"ns");
-            System.out.println("Print           - Duration: "+sum_of_path.print_time/1000000+"ms / "+ sum_of_path.print_time +"ns");
-            long total_time = read_duration+path_duration+sum_of_path.traverse_time+sum_of_path.print_time;
-            System.out.println("Total Time      - Duration: "+ total_time/1000000 + "ms / " + total_time + "ns");
         }
     }
 }
