@@ -3,6 +3,7 @@
 To execute the program follow the steps enlisted below:
 1. Create a new folder (C:\MinTree)
 2. Copy the JAR file and text file (data.txt) to the new folder
+    1. JAR file located in out > artifacts > MinTreePath_jar > MinTreePath.jar
 3. Open the Command Prompt 
 4. Change directory to the folder created (cd C:\MinTree)
 5. Run the following command: java -jar MinTreePath.jar data.txt
