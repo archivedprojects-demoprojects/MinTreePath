@@ -1,9 +1,6 @@
 package com.company;
 
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,8 +8,6 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class File_read {
-    private List<List<Integer>> tree_read = new ArrayList<>();
-
     protected List<List<Integer>> file_read_buffer(String file_name){
         String line;
         int[] line_content;
@@ -22,7 +17,7 @@ public class File_read {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
             while((line = bufferedReader.readLine()) != null) {
-                //Using Lambda Expressions
+                //Using Lambda Expressions to split the line based on white spaces
                 line_content = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
                 content.add(IntStream.of(line_content).boxed().collect(Collectors.toList()));
             }
@@ -37,6 +32,9 @@ public class File_read {
             return null;
         }
     }
+
+    /*
+    private List<List<Integer>> tree_read = new ArrayList<>();
 
     protected List<List<Integer>> file_read_decl(String file_name){
         tree_read = new ArrayList<>(); //Instantiating tree output
@@ -67,5 +65,5 @@ public class File_read {
         }
         return tree_read;
     }
-
+    */
 }

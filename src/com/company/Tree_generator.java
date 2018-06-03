@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.Random;
 
 public class Tree_generator {
+    /*Class and method used for testing purposes only*/
     public void generator(int rows) {
         FileWriter fw = null;
         BufferedWriter bw = null;
